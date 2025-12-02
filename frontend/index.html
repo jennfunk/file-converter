@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF to Markdown Converter</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📄 PDF to Markdown Converter</h1>
+            <p class="subtitle">Convert your PDFs to clean Markdown format with table extraction</p>
+        </header>
+
+        <main>
+            <div class="tabs">
+                <button class="tab-button active" data-tab="upload">Upload File</button>
+                <button class="tab-button" data-tab="url">From URL</button>
+            </div>
+
+            <div class="tab-content active" id="upload-tab">
+                <div class="upload-area" id="dropZone">
+                    <div class="upload-icon">📎</div>
+                    <p class="upload-text">Drag & drop your PDF here</p>
+                    <p class="upload-subtext">or</p>
+                    <button class="btn btn-secondary" id="browseBtn">Browse Files</button>
+                    <input type="file" id="fileInput" accept=".pdf" hidden>
+                </div>
+            </div>
+
+            <div class="tab-content" id="url-tab">
+                <div class="url-input-container">
+                    <input 
+                        type="url" 
+                        id="urlInput" 
+                        placeholder="https://example.com/document.pdf"
+                        class="url-input"
+                    >
+                    <button class="btn btn-primary" id="urlConvertBtn">Convert</button>
+                </div>
+            </div>
+
+            <div class="options-panel" id="optionsPanel" style="display: none;">
+                <h3>Conversion Options</h3>
+                <div class="option">
+                    <label for="pagesInput">
+                        Pages (optional):
+                        <span class="help-text">e.g., "1,2,3" for specific pages, leave blank for all</span>
+                    </label>
+                    <input 
+                        type="text" 
+                        id="pagesInput" 
+                        placeholder="1,2,3"
+                        class="pages-input"
+                    >
+                </div>
+                <div class="option">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="strikethroughCheckbox">
+                        Remove strikethrough formatting
+                    </label>
+                </div>
+                <button class="btn btn-primary btn-block" id="convertBtn">
+                    Convert to Markdown
+                </button>
+            </div>
+
+            <div class="progress" id="progressBar" style="display: none;">
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+                <p class="progress-text">Converting your PDF...</p>
+            </div>
+
+            <div class="result-panel" id="resultPanel" style="display: none;">
+                <div class="result-header">
+                    <h3>✓ Conversion Complete!</h3>
+                    <div class="result-actions">
+                        <button class="btn btn-secondary" id="copyBtn">
+                            📋 Copy to Clipboard
+                        </button>
+                        <button class="btn btn-primary" id="downloadBtn">
+                            📥 Download Markdown
+                        </button>
+                    </div>
+                </div>
+                <div class="result-preview">
+                    <textarea id="markdownOutput" readonly></textarea>
+                </div>
+                <button class="btn btn-secondary btn-block" id="convertAnotherBtn">
+                    Convert Another PDF
+                </button>
+            </div>
+
+            <div class="error-panel" id="errorPanel" style="display: none;">
+                <div class="error-content">
+                    <span class="error-icon">⚠️</span>
+                    <p class="error-message" id="errorMessage"></p>
+                </div>
+                <button class="btn btn-secondary" id="dismissErrorBtn">Dismiss</button>
+            </div>
+        </main>
+
+        <footer>
+            <p>Built with <a href="https://github.com/pymupdf/PyMuPDF" target="_blank">PyMuPDF</a> • Free & Open Source</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

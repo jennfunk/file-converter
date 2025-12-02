@@ -1,0 +1,4 @@
+flask==3.0.0
+flask-cors==4.0.0
+pymupdf4llm==0.0.17
+gunicorn==21.2.0
