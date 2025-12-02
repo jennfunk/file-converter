@@ -1,5 +1,5 @@
 // Configuration
-const API_URL = 'https://your-backend-url.railway.app'; // Update this after deploying backend
+const API_URL = 'https://file-converter-production-4a66.up.railway.app';
 
 // State
 let selectedFile = null;
